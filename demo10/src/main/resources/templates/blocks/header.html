@@ -1,0 +1,26 @@
+<header th:fragment="header">
+
+    <header class="header d-flex justify-content-between align-items-center">
+        <a href="/" th:href="@{/}">
+            <img src="/images/logo.jpg" alt="logo">
+
+        </a>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="admin-page.html">Адмін сторінка</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.html">Особиста сторінка</a>
+            <li class="nav-item">
+                <!-- Посилання на створення автора -->
+                <a class="nav-link" th:href="@{/book/new}">Створити книгу</a>
+
+            </li>
+            <li class="nav-item">
+                <!-- Посилання на створення автора -->
+                <a class="nav-link" th:href="@{/author/new}">Створити автора</a>
+
+            </li>
+        </ul>
+    </header>
+</header>

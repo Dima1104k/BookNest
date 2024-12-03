@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Список авторів</title>
+</head>
+<body>
+<h1>Автори</h1>
+<table class="table" border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Ім'я автора</th>
+        <th>Біографія автора</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="author : ${authors}">
+        <td th:text="${author.id}">1</td>
+        <td th:text="${author.name}">Ім'я автора</td>
+        <td th:text="${author.biography}">Біографія автора</td>
+        <td>
+            <a th:href="@{/author/edit/{id}(id=${author.id})}" class="btn btn-warning">Редагувати</a>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

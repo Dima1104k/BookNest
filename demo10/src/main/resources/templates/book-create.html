@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org"  xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CRM для книгарень та видавництв з
+    управлінням каталогом книг та авторами.">
+    <meta name="keywords" content="BookNest, книги, CRM">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <title>Додати книгу</title>
+</head>
+<body>
+<h1>Додати книгу</h1>
+<form th:action="@{/book/new}" method="post">
+    <div class="mb-3">
+        <label for="title">Назва книги:</label>
+        <input type="text" id="title" name="title" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="price">Ціна:</label>
+        <input type="number" id="price" name="price" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="description">Опис:</label>
+        <textarea id="description" name="description" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="author">Автор:</label>
+        <select id="author" name="authorId" class="form-control" required>
+            <option value="" disabled selected>Виберіть автора</option>
+            <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}">Автор</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Додати книгу</button>
+</form>
+
+</body>
+</html>

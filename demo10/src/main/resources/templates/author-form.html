@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Додавання авторів</title>
+</head>
+<body>
+<h1>Додавання автора</h1>
+<form th:action="@{/author/new}" method="post">
+    <div class="mb-3">
+        <label for="name">Ім'я автора:</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="biography">Біографія автора:</label>
+        <textarea type="text" id="biography" name="biography" class="form-control" rows="4" required>
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Зберегти автора</button>
+</form>
+<a th:href="@{/}">На головну</a>
+</body>
+</html>

@@ -1,0 +1,651 @@
+/* Основні стилі */
+body {
+
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    height: 100%;
+
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700; /* Жирний шрифт для заголовків */
+}
+p {
+    margin-bottom: 1em;
+}
+main{
+    padding: 30px;
+    flex: 1 1 auto;
+}
+
+* {
+    font-weight: 400; /* Звичайний стиль для основного тексту */
+    line-height: 1.6; /* Оптимальна висота рядка для читабельності */
+    font-family: 'Playfair Display', serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: #ffffff;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.header img {
+    height: 50px;
+}
+
+.header .nav {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.header .nav-item a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header .nav-item a:hover {
+    color: #007bff;
+}
+
+/* Секція hero */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 5%;
+    background-image: url('../images/test-photo.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #333;
+    text-align: left;
+}
+
+.hero .content {
+    max-width: 80%;
+}
+
+.hero h1 {
+    font-size: 3.4rem;
+    color: #2e4d34;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero .btn {
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #3E7CB1;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.hero .btn:hover {
+    background-color: #054A91;
+}
+
+.books {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    width: 300px;
+    height: 400px;
+    margin-right: 30px;
+}
+
+.book-center {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    top: 60px;
+    left: 50px;
+    z-index: 2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* Ліва задня книга */
+.book-left {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    top: 20px;
+    left: -30px;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* Права задня книга */
+.book-right {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    top: 120px;
+    left: 180px;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+/* Ефект при наведенні */
+.books img:hover {
+    transform: scale(1.1); /* Збільшення зображення при наведенні */
+}
+
+/* Секція categories */
+.categories {
+    display: flex;
+    justify-content: space-around;
+    padding: 3rem 5%;
+    background-color: #ffffff;
+    flex-wrap: wrap;
+}
+
+/*.card {
+    text-align: left;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    border-radius: 5px;
+    color: #ffffff;
+    position: relative;
+}*/
+
+.card h3 {
+    font-size: 3rem; /* Збільшений розмір шрифту */
+    font-weight: bold;
+    color: #ffffff; /* Білий колір тексту */
+    margin-bottom: 10px;
+    line-height: 1.2; /* Контролює міжрядковий інтервал, щоб текст був компактнішим */
+    white-space: normal; /* Дозволяє перенесення рядків */
+    overflow-wrap: break-word; /* Примусове перенесення довгих слів */
+}
+.card .btn {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 12px 24px;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, opacity 0.3s;
+    align-self: flex-start;
+}
+
+/* Кольори для карток */
+.card.new-release {
+    background-color: #F22B24; /* Червоний */
+}
+.card.new-release .btn {
+    background-color: #CB241F; /* Темніший червоний для кнопки */
+}
+
+
+/*.card img {
+    max-width: 45%;
+    height: auto;
+    border-radius: 5px;
+    margin-left: 170px;
+    margin-bottom: -14.3rem;
+
+}*/
+.card img {
+    width: 100%;
+    max-width: 179px; /* Збільшена максимальна ширина зображення */
+    height: auto;
+    margin: 0 auto 20px; /* Центрування зображення знизу */
+    object-fit: contain; /* Забезпечує пропорційне відображення */
+    border-radius: 4px; /* Додає трохи округлених кутів */
+}
+
+.card {
+    display: flex;
+    align-items: center; /* Вирівнює зображення і текст по центру вертикалі */
+    height: 100%;
+    width: 100%;
+    max-width: 400px; /* Фіксована максимальна ширина картки */
+    padding: 5px 25px; /* Зменшений вертикальний і горизонтальний відступ */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.card.pre-order {
+    background-color: #50D0F7; /* Бірюзовий */
+}
+.card.pre-order .btn {
+    background-color: #27B0D2; /* Темніший бірюзовий для кнопки */
+
+}
+.text-container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: auto; /* Переміщує текстовий блок вниз */
+    padding-right: 15px;
+    max-width: 50%;
+}
+
+
+.card.top-rated {
+    background-color: #0089FF; /* Синій */
+}
+
+.card.top-rated .btn {
+    background-color: #0078E1; /* Темніший синій для кнопки */
+}
+
+
+.card .btn:hover {
+    opacity: 0.8; /* Легке затемнення при наведенні */
+}
+
+
+/*Знижка*/
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Вирівнює вміст вліво */
+    overflow: hidden;
+    max-width: 1200px;
+    background-color: #adacac; /* Сірий фон, як на прикладі */
+    padding: 2rem; /* Використовуємо `rem` замість фіксованих пікселів */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; /* Дозволяє елементам переноситись на новий рядок на менших екранах */
+
+}
+.text-content {
+    text-align: center; /* Вирівнює текст ліворуч */
+}
+
+.text-content p {
+    font-size: 1.1em;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 600; /* Напівжирний для верхнього тексту */
+    letter-spacing: 0.05em;
+}
+
+.text-content h2 {
+    font-size: 2em;
+    font-weight: 700; /* Жирний шрифт для заголовка */
+    margin-bottom: 20px;
+    color: #fff; /* Світліший відтінок для великого заголовка */
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #090909;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0f2d0f;
+}
+
+.image-container {
+    margin: -53px 50px -4rem 50px;
+
+}
+.image-container img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    transition: max-width 0.3s ease; /* Плавне зміна розміру */
+
+}
+.image-container-right{
+    display: flex;
+    justify-content: left;
+    margin-bottom: -24rem;
+    margin-right: -18rem;
+    max-width: 200px;
+
+   }
+.image-container-right img {
+    max-width: 650px;
+    height: auto;
+    border-radius: 8px;
+    position: relative;
+    top: -90px;
+    transition: max-width 0.3s ease; /* Плавне зміна розміру */
+    transform: rotate(-10deg); /* Повертає зображення на 10 градусів вліво */
+}
+    /*Топ*/
+.books-section {
+    background-image: url('../images/test-photo.jpg');
+    padding: 20px;
+    text-align: center;
+
+}
+
+.books-section h2 {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.books-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.book-card {
+    position: relative;
+    width: 180px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-10px);
+}
+
+.book-card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.book-card .tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 3px;
+}
+
+.book-card h3 {
+    font-size: 1rem;
+    color: #333;
+    margin: 10px 10px 5px;
+}
+
+.book-card p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0 10px;
+}
+
+.book-card .price {
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 10px;
+}
+
+.book-card .price del {
+    color: #bbb;
+    margin-right: 5px;
+}
+
+.section-header {
+    display: flex; /* Вирівнюємо елементи в рядок */
+    justify-content: space-between; /* Розподіляємо текст і посилання по краях */
+    align-items: center; /* Вирівнюємо по вертикалі */
+    padding: 10px 20px; /* Відступи зверху/знизу і по боках */
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: #2c3e50; /* Темний текст */
+    margin: 0; /* Забираємо відступи для заголовка */
+}
+
+.section-header .view-all {
+    font-size: 1.3rem;
+    color: #3498db; /* Синє посилання */
+    text-decoration: none; /* Забираємо підкреслення */
+    font-weight: bold;
+}
+
+.section-header .view-all:hover {
+    text-decoration: underline; /* Додаємо підкреслення при наведенні */
+}
+
+
+
+/*-----------------------*/
+/* Секція */
+.top-categories {
+    text-align: center; /* Центруємо заголовок і контент */
+    background-color: #E6E6E6; /* Світло-сірий фон */
+    padding: 20px 10px; /* Відступи */
+    margin-bottom: 20px;
+
+}
+
+/* Заголовок */
+.top-categories h2 {
+    font-size: 2.5rem; /* Розмір шрифту заголовка */
+    color: #2c3e50; /* Темний колір тексту */
+    margin-bottom: 20px; /* Відступ під заголовком */
+}
+
+/* Контейнер з категоріями */
+.categories-container {
+    display: flex; /* Елементи в рядок */
+    justify-content: space-evenly; /* Розподіл простору між елементами */
+    gap: 15px; /* Відстань між категоріями */
+    flex-wrap: wrap; /* Перенос на новий рядок на маленьких екранах */
+}
+
+/* Кожна категорія */
+.category {
+    text-align: center; /* Центруємо текст і зображення */
+
+    margin: 20px; /* Відступ між категоріями */
+}
+.circle {
+    background-image: url('../images/circle.png'); /* URL до білого кола */
+    width: 200px; /* Розмір кола */
+    height: 200px; /* Розмір кола */
+    background-color: #fff; /* Білий фон */
+    border-radius: 50%; /* Робимо коло */
+    display: flex; /* Для вирівнювання зображення всередині */
+    justify-content: center; /* Горизонтальне центрування */
+    align-items: center; /* Вертикальне центрування */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тінь */
+}
+/* Зображення категорії */
+.circle img {
+    width: 120px; /* Розмір зменшеної книги */
+    height: 120px; /* Пропорційно зменшуємо */
+    object-fit: contain; /* Забезпечує збереження пропорцій */
+}
+
+/* Текст під зображенням */
+.category p {
+    font-size: 1.5rem; /* Розмір тексту */
+    color: #2c3e50; /* Колір тексту */
+    margin-top: 10px; /* Відступ зверху від зображення */
+}
+
+/* Анімація на наведенні */
+.category img:hover {
+    transform: scale(1.1); /* Збільшення зображення при наведенні */
+}
+
+
+
+/* Адаптивні стилі */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero .content {
+        max-width: 70%;
+        margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /*.books {
+        justify-content: center;
+    }*/
+
+    .categories {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .card img {
+        max-width: 30%; /* Додаткове обмеження для менших екранів */
+    }
+    .section-header {
+        justify-content: space-between; /* Розташування елементів по краях */
+        padding: 10px 15px; /* Менші відступи */
+    }
+
+    .section-header h2 {
+        margin: 0; /* Забираємо зайві відступи */
+        text-align: left; /* Вирівнюємо текст вліво */
+    }
+
+    .section-header .view-all {
+        margin-right: -20px;
+    }
+    .section-header .view-all span {
+        white-space: nowrap;
+    }
+
+
+}
+
+
+/* Приховуємо зображення, коли ширина екрану перевищує 1500px (симулює збільшений масштаб) */
+
+@media (max-width: 1200px) {
+    .image-container ,
+    .image-container-right {
+        display: none; /* Приховуємо зображення */
+    }
+    .books {
+        display: none; /* Приховує блок з книгами на дуже великих екранах */
+    }
+    .container {
+        display: flex;
+        justify-content: center; /* Центрує текст по горизонталі */
+        max-width: 600px; /* Зменшує ширину контейнера */
+        padding: 3rem 1rem; /* Збільшує внутрішні відступи зверху і знизу для більшої висоти */
+    }
+    .card{
+        margin-bottom: 2rem;
+    }
+    .text-content {
+        text-align: center; /* Центрує текст по центру */
+        flex: none;
+        width: 100%; /* Розтягує текстовий блок на всю ширину контейнера */
+    }
+}
+
+footer {
+    background-color: #054A91;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1 1 200px;
+}
+
+.footer-column h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-column a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: #3E7CB1;
+}
+
+.footer-column i {
+    font-size: 36px;
+}
+
+.footer-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.footer-icons a {
+    margin-right: 15px;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: white;
+}
+
+.footer-text {
+    font-size: 14px;
+    text-align: center;
+    padding-top: 10px;
+    border-top: 1px solid white;
+    width: 100%;
+}
