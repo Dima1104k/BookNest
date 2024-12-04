@@ -2,6 +2,7 @@ package com.example.demo.controlles;
 
 import com.example.demo.models.Author;
 import com.example.demo.models.Book;
+import com.example.demo.models.User;
 import com.example.demo.service.AuthorService;
 import com.example.demo.service.BookService;
 import com.example.demo.service.UserService;
@@ -19,11 +20,11 @@ import java.util.List;
 public class BookController {
     private final BookService bookService;
     private final AuthorService authorService;
+    private final UserService userService;
 
     @GetMapping("/book")
-    public String getAllBooks(Model model, Principal principal) {
+    public String getAllBooks(Model model) {
         model.addAttribute("books", bookService.getAllBooks());
-        model.addAttribute("user",bookService.getUserByPrincipal(principal) );
         return "book-list";
     }
     @GetMapping("/{id}")
@@ -41,6 +42,7 @@ public class BookController {
     public String createBook(@RequestParam String title,
                              @RequestParam int price,
                              @RequestParam String description,
+                             @RequestParam String photoUrl,
                              @RequestParam Long authorId) {
         Author author = authorService.findAuthorById(authorId);
         Book book = new Book();
@@ -48,11 +50,16 @@ public class BookController {
         book.setPrice(price);
         book.setDescription(description);
         book.setAuthor(author);
+        book.setPhotoUrl(photoUrl);
         bookService.saveBook(book);
         return "redirect:/book";
     }
+
     @GetMapping("/")
-    public String index() {
+    public String index(Model model, Principal principal) {
+
+       /* User user =userService.getUserByPrincipal(principal);*/
+      /*  model.addAttribute("user",user);*/
         return "index";
     }
     @PostMapping("/book/delete/{id}")
@@ -68,12 +75,12 @@ public class BookController {
     }
 
     @PostMapping("/book/edit/{id}")
-    public String updateBook(@PathVariable Long id, @RequestParam String title, @RequestParam int price, @RequestParam String description,  @RequestParam String authorName) {
+    public String updateBook(@PathVariable Long id, @RequestParam String title, @RequestParam int price, @RequestParam String description,  @RequestParam String photoUrl) {
         Book updatedBook = bookService.getBookById(id);
         updatedBook.setTitle(title);
         updatedBook.setPrice(price);
         updatedBook.setDescription(description);
-        updatedBook.getAuthor().setName(authorName);
+        updatedBook.setPhotoUrl(photoUrl);
         bookService.updateBook(id,updatedBook);
         return "redirect:/book";
     }

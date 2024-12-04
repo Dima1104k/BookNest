@@ -18,6 +18,7 @@
 <div class="contain">
     <h1>Редагування статті</h1>
     <form th:action="@{/book/edit/{id}(id=${book.id})}" method="post">
+
         <div class="mb-3">
             <label for="title">Назва книги:</label>
             <input type="text" id="title" name="title" class="form-control" th:value="${book.title}" required>
@@ -31,9 +32,8 @@
             <textarea id="description" name="description" class="form-control" th:text="${book.description}"></textarea>
         </div>
         <div class="mb-3">
-            <label for="authorName">Автор:</label>
-            <input type="text" id="authorName" name="authorName" class="form-control"
-                   th:value="${book.author != null ? book.author.name : ''}" required>
+            <label for="photo">Опис:</label>
+            <input id="photo" name="photoUrl" class="form-control" th:value="${book.photoUrl}">
         </div>
         <button type="submit" class="btn btn-primary">Зберегти зміни</button>
     </form>

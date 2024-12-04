@@ -1,9 +1,8 @@
 package com.example.demo.models;
 import com.example.demo.models.enums.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,7 +16,8 @@ import java.util.Set;
     @Data
     public class User implements UserDetails {
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id")
+        @GeneratedValue(strategy = GenerationType.IDENTITY) // Використання AUTO_INCREMENT
         private Long id;
 
         private String name;

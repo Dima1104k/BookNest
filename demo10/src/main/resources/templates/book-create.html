@@ -37,6 +37,10 @@
             <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}">Автор</option>
         </select>
     </div>
+    <div class="mb-3">
+        <label for="photo">Фото:</label>
+        <input id="photo" name="photoUrl" class="form-control">
+    </div>
     <button type="submit" class="btn btn-primary">Додати книгу</button>
 </form>
 
