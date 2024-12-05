@@ -303,7 +303,8 @@ main{
 }
 
 .button:hover {
-    background-color: #0f2d0f;
+    background-color: white;
+    color: black;
 }
 
 .image-container {
@@ -364,6 +365,9 @@ main{
     overflow: hidden;
     text-align: left;
     transition: transform 0.3s ease;
+
+    flex: 1 1 calc(20% - 20px); /* Картки займають 20% ширини контейнера, з урахуванням відстані між ними */
+    box-sizing: border-box;
 }
 
 .book-card:hover {
@@ -388,13 +392,13 @@ main{
 }
 
 .book-card h3 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #333;
     margin: 10px 10px 5px;
 }
 
 .book-card p {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: #777;
     margin: 0 10px;
 }
@@ -651,218 +655,45 @@ footer {
 }
 
 
-/*admin.html*/
-.table {
-    width: 70%; /* Таблиця займатиме 70% ширини сторінки */
-    max-width: 800px; /* Максимальна ширина таблиці */
-    margin-bottom: 20px;
-    border-collapse: collapse;
-    margin-left: 10px;
-    background: #fff;
-    border: 3px solid #ffd300 !important;
-    text-align: center; /* Вирівнює текст */
-}
-
-.table th {
-    font-weight: bold;
-    padding: 10px;
-    background: #ffd300 !important;
-    color: #000; /* Чорний текст */
-    text-align: center;
-    font-size: 18px;
-    border: 1px solid #ddd; /* Межі між заголовками */
-}
-
-.table td {
-    padding: 10px;
-    border: 1px solid #ddd; /* Сіра межа для поділу */
-    font-size: 16px;
-    word-wrap: break-word; /* Переноси тексту */
-    max-width: 250px; /* Максимальна ширина колонок */
-
-}
-
-.table tr:nth-child(even) {
-    background: #f9f9f9; /* Світло-сірий колір для чіткості рядків */
-}
-
-.table ul {
-    list-style: none; /* Вимкнення стандартних маркерів списку */
-    padding: 0;
-    margin: 0;
-}
-
-.table ul li {
-    display: inline-block; /* Ролі в один рядок */
-    margin-right: 5px; /* Відступи між ролями */
-    padding: 2px 5px;
-    background: #ddd; /* Фон для ролі */
-    border-radius: 3px; /* Закруглені кути */
-    font-size: 14px; /* Трохи менший шрифт */
-    color: #000;
-}
 
 
-.table button,
-.table a {
-    color: #fff; /* Білий текст */
-    border: none; /* Без рамки */
-    font-weight: bold; /* Жирний текст */
-    border-radius: 5px; /* Згладжені кути */
-    cursor: pointer; /* Іконка курсора у вигляді руки */
-    text-decoration: none; /* Заборона підкреслення посилання */
-    padding: 11px 15px; /* Однакові відступи */
-    font-size: 14px; /* Однаковий розмір тексту */
-    line-height: 1; /* Висота рядка дорівнює 16px */
-    display: inline-block; /* Для однакового вигляду */
-    transition: all 0.3s ease; /* Анімація при наведенні */
-}
-
-/* Стиль для червоної кнопки (видалення) */
-.table button {
-    background-color: #ff4d4d; /* Яскраво-червоний фон */
-}
-.table button:hover {
-    background-color: #ff0000; /* Темніший червоний при наведенні */
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Світіння при наведенні */
-    transform: scale(1.05); /* Легке збільшення при наведенні */
-}
-.table a {
-    background-color: #ffc107; /* Жовто-оранжевий фон */
-    text-align: center; /* Центрування тексту */
-}
-.table a:hover {
-    background-color: #e0a800; /* Темніший жовто-оранжевий при наведенні */
-    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5); /* Світіння при наведенні */
-    transform: scale(1.05); /* Легке збільшення при наведенні */
-}
-
-/* Основний стиль для контейнера */
-.create-section {
-    margin-top: 20px; /* Відступ зверху */
-    display: flex; /* Вирівнюємо посилання в один ряд */
-    gap: 15px; /* Простір між кнопками */
-
-}
-
-/* Стиль для кнопок */
-.create-section .btn {
-    margin-left: 10px; /* Відступ праворуч */
-    display: inline-block; /* Дозволяємо відступи */
-    color: #fff; /* Білий текст */
-    margin-right: 20px; /* Відступ праворуч */
-    background-color: #ff9900 ; /* Синій фон */
-    padding: 10px 20px; /* Відступи всередині */
-    border: none; /* Без рамки */
-    border-radius: 5px; /* Закруглені кути */
-    text-decoration: none; /* Забираємо підкреслення */
+.cart-button {
+    background-color: #3E7CB1; /* Зелений колір для кнопки */
+    color: white; /* Білий текст */
     font-size: 16px; /* Розмір тексту */
-    font-weight: bold; /* Жирний текст */
-    cursor: pointer; /* Іконка курсора */
-    transition: background-color 0.3s ease; /* Ефект при наведенні */
+    padding: 10px 20px; /* Внутрішні відступи */
+    border: none; /* Забираємо стандартну рамку */
+    border-radius: 5px; /* Закруглені кути */
+    cursor: pointer; /* Вказівник миші */
+    transition: background-color 0.3s ease; /* Анімація при наведенні */
 }
 
-/* Ефект при наведенні */
-.create-section .btn:hover {
-    background-color: #b37a00; /* Темніший синій фон */
+.cart-button:hover {
+    background-color: #054A91; /* Трохи темніший зелений при наведенні */
 }
 
-
-/*edit_genres*/
-.editcontainer {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #fff;
-    border: 2px solid #ffd300;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px 30px;
+.cart-button:focus {
+    outline: none; /* Забираємо стандартну рамку фокусу */
 }
 
-.edittitle {
-    font-size: 26px;
+/* Стилі для контейнера з посиланням */
+.back-link {
+    text-align: center; /* Центруємо вміст */
+    margin-top: 20px; /* Відступ від кнопки форми */
+}
+
+/* Стилі для кнопки "На головну" */
+a.btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ccc;
     color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.editform {
-    display: flex;
-    flex-direction: column;
-}
-
-.editinput-group {
-    margin-bottom: 15px;
-}
-
-.editinput-group label {
-    display: block;
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 5px;
-}
-
-.editinput, .editselect {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-}
-.edittextarea {
-    resize: none;
-}
-
-.editbuttons {
-    display: flex;
-    justify-content: space-between;
-}
-
-.btn-cancel {
-    background-color: #ff4d4d;
-    color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.btn-cancel:hover {
-    background-color: #ff0000;
-}
-
-.btn-save {
-    background-color: #ffd300;
-    color: #333;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-save:hover {
-    background-color: #ffc107;
-    color: #fff;
-}
-
-
-.editcheckbox-label {
+    border-radius: 6px;
     font-size: 16px;
-    color: #555;
 }
 
-.editcheckbox {
-    margin-right: 10px;
+a.btn-back:hover {
+    background-color: #aaa;
+    color: white;
 }
-
-.editcheckbox-text {
-    font-size: 14px;
-    color: #333;
-}
-
-

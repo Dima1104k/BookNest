@@ -43,7 +43,7 @@
         <div class="card new-release">
             <div class="text-container">
                 <h3>Нові релізи</h3>
-                <button class="btn">Дізнатися більше</button>
+                <a class="btn" th:href="@{/books-list}">Дізнатися більше</a>
             </div>
             <img th:src="${books[0].photoUrl}" alt="Нові релізи">
         </div>
@@ -51,7 +51,7 @@
         <div class="card top-rated">
             <div class="text-container">
                 <h3>Рейтинг книг</h3>
-                <button class="btn">Дізнатися більше</button>
+                <a class="btn" th:href="@{/books-list}">Дізнатися більше</a>
             </div>
             <img th:src="${books[1].photoUrl}" alt="Рейтинг книг" th:if="${books.size() > 1}">
         </div>
@@ -65,7 +65,7 @@
             <div class="text-content">
                 <p>Більше уваги для вашої книги</p>
                 <h2>Знижка 20% на окремі книги</h2>
-                <a href="#" class="button">Купити</a>
+                <a class="button" th:href="@{/books-list}">Дізнатися більше</a>
             </div>
         <div class="image-container-right">
             <img src="/images/discount-book.png" alt="Books">
@@ -78,48 +78,23 @@
         </section>
         <div class="books-container">
 
-            <div class="book-card" th:each="book : ${books}">
+            <div class="book-card"
+                 th:each="book, iterStat : ${books}"
+                 th:if="${iterStat.index < 3}">
                 <img th:src="${book.photoUrl}" alt="Фото книги">
                 <span class="tag">Хіт</span>
                 <h3 th:text="${book.title}"></h3>
                 <p th:text="'Автор: ' + ${book.author.getName()}"></p>
                 <p class="price" th:text="'Ціна: ' + ${book.price} + ' грн.'"></p>
 
-                <!-- Кнопка для додавання книги в корзину -->
                 <form th:action="@{/addToCart}" method="post">
                     <input type="hidden" name="bookId" th:value="${book.id}">
-                    <button type="submit">Додати в корзину</button>
+                    <button type="submit" class="cart-button">Додати в корзину</button>
                 </form>
             </div>
+
         </div>
     </section>
-
-    <section class="top-categories">
-        <h2>Популярні категорії</h2>
-        <div class="categories-container">
-            <div class="category">
-                <div class="circle">
-                    <img src="/images/book1.jpg" alt="Категорія 1">
-                </div>
-                <p>Категорія 1</p>
-            </div>
-            <div class="category">
-                <div class="circle">
-                    <img src="/images/book1.jpg" alt="Категорія 2">
-                </div>
-                <p>Категорія 2</p>
-            </div>
-            <div class="category">
-                <div class="circle">
-                    <img src="/images/book1.jpg" alt="Категорія 3">
-                </div>
-                <p>Категорія 3</p>
-            </div>
-        </div>
-    </section>
-
-
-
 
 </main>
 

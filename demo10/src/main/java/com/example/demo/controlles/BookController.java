@@ -114,14 +114,6 @@ public class BookController {
         return "redirect:/book";
     }
 
-    @GetMapping("/books")
-    public String books(Model model) {
-        List<Book> books = bookService.getAllBooks();
-        model.addAttribute("books", books);
-        return "book-list-users";
-    }
-
-
 
     private List<Book> cart = new ArrayList<>();
     private Map<Long, Integer> cartQuantities = new HashMap<>();
@@ -208,5 +200,12 @@ public class BookController {
         model.addAttribute("cartQuantities", cartQuantities);
 
         return "cart";
+    }
+
+    @GetMapping("/books-list")
+    public String listBooks(Model model) {
+        List<Book> books = bookService.getAllBooks();
+        model.addAttribute("books", books);
+        return "book-list-users";
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/create-style.css}">
     <title>Додавання видавця</title>
 </head>
 <body>
@@ -12,7 +12,6 @@
         <label for="name">Назва видавця:</label>
         <input type="text" id="name" name="name" class="form-control" required>
     </div>
-
 
     <div class="mb-3">
         <label for="address">Адреса:</label>
@@ -38,16 +37,24 @@
             $("#tel").mask("+38(999) 99-99-999");
         });
     </script>
+
     <div class="mb-3">
         <label for="website">Вебсайт:</label>
         <input type="url" id="website" name="website" class="form-control" required>
     </div>
-    <button type="submit" class="btn btn-primary">Зберегти жар</button>
+
+    <button type="submit" class="btn btn-primary">Зберегти видавця</button>
+
+    <div class="back-link">
+        <a href="/admin" class="btn-back">Назад</a>
+    </div>
 </form>
+
 <div th:if="${error}" class="alert alert-danger mt-3">
     <p th:text="${error}"></p>
 </div>
-<a th:href="@{/}">На головну</a>
+
+
 </body>
 
 </html>

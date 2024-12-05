@@ -1,0 +1,77 @@
+/* Загальні стилі для форми */
+form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок форми */
+h1 {
+    text-align: center;
+    color: #3E7CB1;
+    margin-bottom: 20px;
+}
+
+/* Стилі для лейблів */
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Стилі для полів вводу */
+input.form-control, textarea.form-control, select.form-control {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input.form-control:focus, textarea.form-control:focus, select.form-control:focus {
+    border-color: #3E7CB1;
+    outline: none;
+}
+
+/* Стилі для кнопки */
+button.btn {
+    width: 100%;
+    padding: 15px;
+    margin: 5px;
+    background-color: #3E7CB1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button.btn:hover {
+    background-color: #2e5a82;
+}
+
+/* Стилі для посилання "Назад" */
+.back-link {
+    text-align: center; /* Центруємо посилання */
+    margin-top: 20px; /* Відступ від кнопки */
+}
+
+a.btn-back {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ccc;
+    color: #333;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+a.btn-back:hover {
+    background-color: #aaa;
+    color: white;
+}

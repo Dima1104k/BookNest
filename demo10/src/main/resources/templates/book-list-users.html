@@ -2,15 +2,33 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <title>Book list</title>
 </head>
 <body>
-<div class="book-card" th:each="book : ${books}">
-    <img th:src="${book.photoUrl}" alt="Photo">
-    <span class="tag">Хіт</span>
-    <h3 th:value="${book.title}"></h3>
-    <p th:value="${book.author}"></p>
-    <p class="price" th:value="${book.price}">$</p>
-</div>
+<header th:insert="blocks/header :: header"></header>
+<section class="books-section">
+    <section class="section-header">
+        <h2>Перелік книг</h2>
+    </section>
+    <div class="books-container">
+        <div class="book-card" th:each="book : ${books}">
+            <img th:src="${book.photoUrl}" alt="Фото книги">
+            <span class="tag">Хіт</span>
+            <h3 th:text="${book.title}"></h3>
+            <p th:text="'Автор: ' + ${book.author.getName()}"></p>
+            <p class="price" th:text="'Ціна: ' + ${book.price} + ' грн.'"></p>
+
+            <form th:action="@{/addToCart}" method="post">
+                <input type="hidden" name="bookId" th:value="${book.id}">
+                <button type="submit" class="cart-button">Додати в корзину</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer th:insert="blocks/foot :: footer"></footer>
 </body>
 </html>

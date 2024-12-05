@@ -1,229 +1,217 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
-}
 
-h1 {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    margin: 0;
-}
-
-hr {
-    border: 1px solid #4CAF50;
-    margin: 20px 0;
-}
-
+/*admin.html*/
 .table {
-    width: 100%;
+    width: 70%; /* Таблиця займатиме 70% ширини сторінки */
+    max-width: 800px; /* Максимальна ширина таблиці */
+    margin: 0 auto; /* Центрує таблицю по горизонталі */
+    margin-bottom: 20px;
     border-collapse: collapse;
-    margin: 20px 0;
+    background: #fff;
+    border: 3px solid #81A4CD !important;
+    text-align: center; /* Вирівнює текст */
 }
 
-.table th, .table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
 
 .table th {
-    background-color: #f2f2f2;
-    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    background: #81A4CD !important;
+    color: #000; /* Чорний текст */
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #ddd; /* Межі між заголовками */
 }
 
 .table td {
-    background-color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ddd; /* Сіра межа для поділу */
+    font-size: 16px;
+    word-wrap: break-word; /* Переноси тексту */
+    max-width: 250px; /* Максимальна ширина колонок */
+
 }
 
+.table tr:nth-child(even) {
+    background: #f9f9f9; /* Світло-сірий колір для чіткості рядків */
+}
+
+.table ul {
+    list-style: none; /* Вимкнення стандартних маркерів списку */
+    padding: 0;
+    margin: 0;
+}
+
+.table ul li {
+    display: inline-block; /* Ролі в один рядок */
+    margin-right: 5px; /* Відступи між ролями */
+    padding: 2px 5px;
+    background: #ddd; /* Фон для ролі */
+    border-radius: 3px; /* Закруглені кути */
+    font-size: 14px; /* Трохи менший шрифт */
+    color: #000;
+}
+
+
+.table button,
 .table a {
-    color: #4CAF50;
-    text-decoration: none;
+    color: #fff; /* Білий текст */
+    border: none; /* Без рамки */
+    font-weight: bold; /* Жирний текст */
+    border-radius: 5px; /* Згладжені кути */
+    cursor: pointer; /* Іконка курсора у вигляді руки */
+    text-decoration: none; /* Заборона підкреслення посилання */
+    padding: 11px 15px; /* Однакові відступи */
+    font-size: 14px; /* Однаковий розмір тексту */
+    line-height: 1; /* Висота рядка дорівнює 16px */
+    display: inline-block; /* Для однакового вигляду */
+    transition: all 0.3s ease; /* Анімація при наведенні */
+}
+
+/* Стиль для червоної кнопки (видалення) */
+.table button {
+    background-color: #ff4d4d; /* Яскраво-червоний фон */
+}
+.table button:hover {
+    background-color: #ff0000; /* Темніший червоний при наведенні */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Світіння при наведенні */
+    transform: scale(1.05); /* Легке збільшення при наведенні */
+}
+.table a {
+    background-color: #81A4CD; /* Жовто-оранжевий фон */
+    text-align: center; /* Центрування тексту */
+}
+.table a:hover {
+    background-color: #3E7CB1; /* Темніший жовто-оранжевий при наведенні */
+    box-shadow: 0 0 10px rgba(46, 90, 130, 0.5); /* Світіння при наведенні */
+    transform: scale(1.05); /* Легке збільшення при наведенні */
+}
+
+/* Основний стиль для контейнера */
+.create-section {
+    margin-top: 20px; /* Відступ зверху */
+    display: flex; /* Вирівнюємо посилання в один ряд */
+    gap: 15px; /* Простір між кнопками */
+    justify-content: center; /* Центруємо кнопки по горизонталі */
+    align-items: center; /* Центруємо кнопки по вертикалі (якщо потрібно) */
+}
+
+
+/* Стиль для кнопок */
+.create-section .btn {
+    margin-left: 10px; /* Відступ праворуч */
+    display: inline-block; /* Дозволяємо відступи */
+    color: #fff; /* Білий текст */
+    margin-right: 20px; /* Відступ праворуч */
+    background-color: #3E7CB1 ; /* Синій фон */
+    padding: 10px 20px; /* Відступи всередині */
+    border: none; /* Без рамки */
+    border-radius: 5px; /* Закруглені кути */
+    text-decoration: none; /* Забираємо підкреслення */
+    font-size: 16px; /* Розмір тексту */
+    font-weight: bold; /* Жирний текст */
+    cursor: pointer; /* Іконка курсора */
+    transition: background-color 0.3s ease; /* Ефект при наведенні */
+}
+
+/* Ефект при наведенні */
+.create-section .btn:hover {
+    background-color: #054A91; /* Темніший синій фон */
+}
+
+
+/*edit_genres*/
+.editcontainer {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border: 2px solid #81A4CD;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+}
+
+.edittitle {
+    font-size: 26px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
     font-weight: bold;
 }
 
-.table a:hover {
-    color: #45a049;
-}
-
-.create-section {
-    margin: 20px;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.create-section .nav {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.editform {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
 }
 
-.create-section .nav-item {
-    margin: 10px;
+.editinput-group {
+    margin-bottom: 15px;
 }
 
-.create-section .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    text-decoration: none;
+.editinput-group label {
+    display: block;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.editinput, .editselect {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
+}
+.edittextarea {
+    resize: none;
 }
 
-.create-section .btn:hover {
-    background-color: #45a049;
+.editbuttons {
+    display: flex;
+    justify-content: space-between;
 }
 
-.create-section .btn:active {
-    background-color: #388e3c;
-}
-
-.create-section .nav-item {
-    flex: 1;
+.btn-cancel {
+    background-color: #ff4d4d;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
     text-align: center;
+    transition: all 0.3s ease;
 }
 
-.create-section .nav-item a {
-    width: 100%;
+.btn-cancel:hover {
+    background-color: #ff0000;
 }
 
-.create-section .nav-item a {
-    margin: 5px 0;
+.btn-save {
+    background-color: #3E7CB1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.create-section .nav-item a:last-child {
-    margin-bottom: 0;
+.btn-save:hover {
+    background-color: #054A91;
+    color: #fff;
 }
 
-.create-section .nav-item a {
-    background-color: #2196F3;
+
+.editcheckbox-label {
+    font-size: 16px;
+    color: #555;
 }
 
-.create-section .nav-item a:hover {
-    background-color: #1976D2;
+.editcheckbox {
+    margin-right: 10px;
 }
 
-.create-section .nav-item a:active {
-    background-color: #1565C0;
-}
-
-.create-section .nav-item a {
-    width: 100%;
-}
-
-.create-section .nav-item a:active {
-    background-color: #0d47a1;
-}
-
-.create-section .nav-item a {
-    background-color: #009688;
-}
-
-.create-section .nav-item a:hover {
-    background-color: #00796b;
-}
-
-.create-section .nav-item a:active {
-    background-color: #004d40;
-}
-
-.create-section .nav-item a {
-    background-color: #ff5722;
-}
-
-.create-section .nav-item a:hover {
-    background-color: #e64a19;
-}
-
-.create-section .nav-item a:active {
-    background-color: #d32f2f;
-}
-
-.create-section .nav-item a {
-    background-color: #673ab7;
-}
-
-.create-section .nav-item a:hover {
-    background-color: #512da8;
-}
-
-.create-section .nav-item a:active {
-    background-color: #311b92;
-}
-
-.create-section .nav-item a {
-    background-color: #ffc107;
-}
-
-.create-section .nav-item a:hover {
-    background-color: #ffb300;
-}
-
-.create-section .nav-item a:active {
-    background-color: #ff8f00;
-}
-
-.create-section .nav-item a {
-    background-color: #00bcd4;
-}
-
-.create-section .nav-item a:hover {
-    background-color: #0097a7;
-}
-
-.create-section .nav-item a:active {
-    background-color: #00838f;
-}
-
-.create-section .nav-item a {
-    background-color: #9c27b0;
-}
-
-.create-section .nav-item a:hover {
-    background-color: #7b1fa2;
-}
-
-.create-section .nav-item a:active {
-    background-color: #6a1b9a;
-}
-
-.create-section .nav-item a {
-    background-color: #ff9800;
-}
-
-.create-section .nav-item a:hover {
-    background-color: #fb8c00;
-}
-
-.create-section .nav-item a:active {
-    background-color: #f57c00;
-}
-
-.create-section .nav-item a {
-    background-color: #673ab7;
-}
-
-.create-section .nav-item a:hover {
-    background-color: #512da8;
-}
-
-.create-section .nav-item a:active {
-    background-color: #311b92;
-}
-
-.create-section .nav-item a {
-    background-color: #4caf50;
-}
-.create-section .nav-item a:hover {
-    background-color: #388e3c;
+.editcheckbox-text {
+    font-size: 14px;
+    color: #333;
 }

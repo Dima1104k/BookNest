@@ -26,6 +26,4 @@ public class Genres {
     private String description;
     @OneToMany(mappedBy = "genre")
     private List<Book> books = new ArrayList<>();
-
-
 }

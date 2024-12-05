@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-
 @Table(name="publishers")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,5 +28,4 @@ public class Publisher {
 
     @OneToMany(mappedBy = "publisher", cascade = CascadeType.ALL)
     private List<Book> books = new ArrayList<>();
-
-    }
+}

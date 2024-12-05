@@ -2,36 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/list-style.css}">
     <title>Список авторів</title>
 </head>
-<body>
-<h1>Автори</h1>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Ім'я автора</th>
-        <th>Біографія автора</th>
-        <th>Дії</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="author : ${authors}">
-        <td th:text="${author.name}">Ім'я автора</td>
-        <td th:text="${author.biography}">Біографія автора</td>
-        <td>
-            <a th:href="@{/author/edit/{id}(id=${author.id})}" class="btn btn-warning">Редагувати</a>
-            <form th:action="@{/author/delete/{id}(id=${author.id})}" method="post" style="display:inline;">
-                <button type="submit">Видалити</button>
-            </form>
-        </td>
-
-    </tr>
-
-    </tbody>
-</table>
-<div>
-    <a th:href="@{/admin}" class="btn">Назад</a>
+<body><h1>Автори</h1>
+<hr>
+<div style="overflow-x: auto;">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Ім'я автора</th>
+            <th>Біографія автора</th>
+            <th>Дії</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="author : ${authors}">
+            <td th:text="${author.name}">Ім'я автора</td>
+            <td th:text="${author.biography}">Біографія автора</td>
+            <td>
+                <a th:href="@{/author/edit/{id}(id=${author.id})}" class="btn btn-warning btn-sm">Редагувати</a>
+                <form th:action="@{/author/delete/{id}(id=${author.id})}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Видалити</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+<div class="back-link">
+    <a th:href="@{/admin}" class="btn-back">Назад</a>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,89 @@
+/* Контейнер для форми редагування */
+.editcontainer {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок форми */
+.edittitle {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Загальний стиль для групи вводу */
+.editinput-group {
+    margin-bottom: 15px;
+}
+
+/* Стиль для міток */
+.editinput-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Стиль для текстових полів вводу та текстових полів */
+.editinput, .edittextarea, .editselect {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Стиль для текстової області (textarea) */
+.edittextarea {
+    resize: vertical;
+}
+
+/* Стиль для кнопок (Зберегти, Назад) */
+.editbuttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Кнопка "Назад" */
+.btn-cancel {
+    background-color: #ccc;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn-cancel:hover {
+    background-color: #bbb;
+}
+
+/* Кнопка "Зберегти зміни" */
+.btn-save {
+    background-color: #3E7CB1;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-save:hover {
+    background-color: #054A91;
+}
+
+/* Відступи і відображення для форми */
+form.editform {
+    display: grid;
+    gap: 20px;
+}

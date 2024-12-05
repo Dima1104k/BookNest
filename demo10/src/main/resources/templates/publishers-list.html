@@ -2,42 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/list-style.css}">
   <title>Список жанрів</title>
 </head>
-<body>
-<h1>Видавництва</h1>
-<table class="table">
-  <thead>
-  <tr>
-    <th>Назва</th>
-    <th>Адреса</th>
-    <th>Телефон</th>
-    <th>Вебсайт</th>
-    <th>Дії</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="publisher : ${publishers}">
-    <td th:text="${publisher.name}"></td>
-    <td th:text="${publisher.address}"></td>
-    <td th:text="${publisher.phone}"></td>
-    <td>
-      <a th:href="${publisher.website}" th:text="${publisher.website}" target="_blank"></a>
-    </td>
-
-    <td style="display:inline-block;">
-        <a th:href="@{/publisher/edit/{id}(id=${publisher.id})}" class="btn btn-warning" style="margin-bottom: 10px">Редагувати</a>
+<body><h1>Видавництва</h1>
+<hr>
+<div style="overflow-x: auto;">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Назва</th>
+      <th>Адреса</th>
+      <th>Телефон</th>
+      <th>Вебсайт</th>
+      <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="publisher : ${publishers}">
+      <td th:text="${publisher.name}">Назва видавництва</td>
+      <td th:text="${publisher.address}">Адреса видавництва</td>
+      <td th:text="${publisher.phone}">Телефон видавництва</td>
+      <td>
+        <a th:href="${publisher.website}" th:text="${publisher.website}" target="_blank">Вебсайт</a>
+      </td>
+      <td style="display:inline-block;">
+        <a th:href="@{/publisher/edit/{id}(id=${publisher.id})}" class="btn btn-warning btn-sm" style="margin-bottom: 10px">Редагувати</a>
         <form th:action="@{/publisher/delete/{id}(id=${publisher.id})}" method="post" style="display:inline;">
-        <button type="submit">Видалити</button>
-      </form>
-    </td>
-  </tr>
-
-  </tbody>
-</table>
-<div>
-  <a th:href="@{/admin}" class="btn">Назад</a>
+          <button type="submit" class="btn btn-danger btn-sm">Видалити</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>
+<div class="back-link">
+  <a th:href="@{/admin}" class="btn-back">Назад</a>
+</div>
+
 </body>
 </html>
