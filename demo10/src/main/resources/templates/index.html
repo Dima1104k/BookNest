@@ -20,12 +20,21 @@
         <div class="content">
             <h1>НАЙБІЛЬШИЙ КНИЖКОВИЙ МАГАЗИН В ЄВРОПІ</h1>
             <p>Ми доставляємо книги по всьому світу. Понад 10,000 книг в наявності</p>
-            <a href="#" class="btn btn-primary">ПІШОВ НАФІГ</a>
         </div>
         <div class="books d-flex justify-content-center">
-            <img src="/images/book1.jpg" alt="Центральна Книга" class="book-center">
-            <img src="/images/book1.jpg" alt="Ліва Книга" class="book-left">
-            <img src="/images/book1.jpg" alt="Права Книга" class="book-right">
+            <div th:each="book, iter : ${books}">
+                <img th:src="${book.photoUrl}" alt="Центральна Книга"
+                     class="book-center"
+                     th:if="${iter.index == 0}">
+
+                <img th:src="${book.photoUrl}" alt="Ліва Книга"
+                     class="book-left"
+                     th:if="${iter.index == 1}">
+
+                <img th:src="${book.photoUrl}" alt="Права Книга"
+                     class="book-right"
+                     th:if="${iter.index == 2}">
+            </div>
         </div>
 
     </section>
@@ -36,23 +45,18 @@
                 <h3>Нові релізи</h3>
                 <button class="btn">Дізнатися більше</button>
             </div>
-            <img src="/images/book1.jpg" alt="Нові релізи">
+            <img th:src="${books[0].photoUrl}" alt="Нові релізи">
         </div>
-        <div class="card pre-order">
-            <div class="text-container">
-                <h3>Предзамовлення</h3>
-                <button class="btn">Дізнатися більше</button>
-            </div>
-            <img src="/images/book1.jpg" alt="Предзамовлення">
-        </div>
+
         <div class="card top-rated">
             <div class="text-container">
                 <h3>Рейтинг книг</h3>
                 <button class="btn">Дізнатися більше</button>
             </div>
-            <img src="/images/book1.jpg" alt="Рейтинг книг">
+            <img th:src="${books[1].photoUrl}" alt="Рейтинг книг" th:if="${books.size() > 1}">
         </div>
     </section>
+
     <div class="container">
         <div class="image-container">
             <img src="/images/girl.png" alt="Girl with books">
@@ -71,43 +75,21 @@
     <section class="books-section">
         <section class="section-header">
             <h2>Популярне на BookNest</h2>
-            <a href="#" class="view-all"><span>Переглянути всі →</span></a>
         </section>
         <div class="books-container">
-            <div class="book-card">
-                <img src="/images/book1.jpg" alt="Мистецтво моди">
+
+            <div class="book-card" th:each="book : ${books}">
+                <img th:src="${book.photoUrl}" alt="Фото книги">
                 <span class="tag">Хіт</span>
-                <h3>Мистецтво моди</h3>
-                <p>Автор: Олекс Хансен</p>
-                <p class="price">$80.00 – $200.00</p>
-            </div>
-            <div class="book-card">
-                <img src="/images/book1.jpg" alt="100 обраних поезій">
-                <span class="tag">-13%</span>
-                <h3>100 обраних поезій</h3>
-                <p>Автор: Аліс Кріс</p>
-                <p class="price"><del>$400.00</del> $350.00</p>
-            </div>
-            <div class="book-card">
-                <img src="/images/book1.jpg" alt="Життя — це те, що ти створюєш">
-                <span class="tag">Хіт</span>
-                <h3>Життя — це те, що ти створюєш</h3>
-                <p>Автор: Гленна Берг</p>
-                <p class="price"><del>$120.00</del> $100.00</p>
-            </div>
-            <div class="book-card">
-                <img src="/images/book1.jpg" alt="Безсердечна">
-                <span class="tag">-17%</span>
-                <h3>Безсердечна</h3>
-                <p>Автор: Мерріса Мейєр</p>
-                <p class="price">$214.22</p>
-            </div>
-            <div class="book-card">
-                <img src="/images/book1.jpg" alt="Піднята душа">
-                <span class="tag">Хіт</span>
-                <h3>Піднята душа</h3>
-                <p>Автор: Майкл Сінгер</p>
-                <p class="price">$125.00</p>
+                <h3 th:text="${book.title}"></h3>
+                <p th:text="'Автор: ' + ${book.author.getName()}"></p>
+                <p class="price" th:text="'Ціна: ' + ${book.price} + ' грн.'"></p>
+
+                <!-- Кнопка для додавання книги в корзину -->
+                <form th:action="@{/addToCart}" method="post">
+                    <input type="hidden" name="bookId" th:value="${book.id}">
+                    <button type="submit">Додати в корзину</button>
+                </form>
             </div>
         </div>
     </section>

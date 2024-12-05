@@ -17,7 +17,7 @@ import java.util.Set;
     public class User implements UserDetails {
         @Id
         @Column(name = "id")
-        @GeneratedValue(strategy = GenerationType.IDENTITY) // Використання AUTO_INCREMENT
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
         private String name;
         @Column(unique = true)
@@ -28,7 +28,6 @@ import java.util.Set;
 
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    /*Hibernate автоматично створює додаткову таблицю для збереження значень*/
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles =new HashSet<>();

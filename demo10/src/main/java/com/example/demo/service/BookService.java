@@ -15,12 +15,14 @@ import org.springframework.stereotype.Service;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
     private final GenresRepository genresRepository;
+
     @Transactional
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
@@ -51,4 +53,6 @@ public class BookService {
     public void deleteBook(Long id) {
         bookRepository.deleteById(id);
     }
+
+
 }

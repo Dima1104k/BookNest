@@ -1,0 +1,229 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+}
+
+hr {
+    border: 1px solid #4CAF50;
+    margin: 20px 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.table td {
+    background-color: #ffffff;
+}
+
+.table a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.table a:hover {
+    color: #45a049;
+}
+
+.create-section {
+    margin: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.create-section .nav {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.create-section .nav-item {
+    margin: 10px;
+}
+
+.create-section .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.create-section .btn:hover {
+    background-color: #45a049;
+}
+
+.create-section .btn:active {
+    background-color: #388e3c;
+}
+
+.create-section .nav-item {
+    flex: 1;
+    text-align: center;
+}
+
+.create-section .nav-item a {
+    width: 100%;
+}
+
+.create-section .nav-item a {
+    margin: 5px 0;
+}
+
+.create-section .nav-item a:last-child {
+    margin-bottom: 0;
+}
+
+.create-section .nav-item a {
+    background-color: #2196F3;
+}
+
+.create-section .nav-item a:hover {
+    background-color: #1976D2;
+}
+
+.create-section .nav-item a:active {
+    background-color: #1565C0;
+}
+
+.create-section .nav-item a {
+    width: 100%;
+}
+
+.create-section .nav-item a:active {
+    background-color: #0d47a1;
+}
+
+.create-section .nav-item a {
+    background-color: #009688;
+}
+
+.create-section .nav-item a:hover {
+    background-color: #00796b;
+}
+
+.create-section .nav-item a:active {
+    background-color: #004d40;
+}
+
+.create-section .nav-item a {
+    background-color: #ff5722;
+}
+
+.create-section .nav-item a:hover {
+    background-color: #e64a19;
+}
+
+.create-section .nav-item a:active {
+    background-color: #d32f2f;
+}
+
+.create-section .nav-item a {
+    background-color: #673ab7;
+}
+
+.create-section .nav-item a:hover {
+    background-color: #512da8;
+}
+
+.create-section .nav-item a:active {
+    background-color: #311b92;
+}
+
+.create-section .nav-item a {
+    background-color: #ffc107;
+}
+
+.create-section .nav-item a:hover {
+    background-color: #ffb300;
+}
+
+.create-section .nav-item a:active {
+    background-color: #ff8f00;
+}
+
+.create-section .nav-item a {
+    background-color: #00bcd4;
+}
+
+.create-section .nav-item a:hover {
+    background-color: #0097a7;
+}
+
+.create-section .nav-item a:active {
+    background-color: #00838f;
+}
+
+.create-section .nav-item a {
+    background-color: #9c27b0;
+}
+
+.create-section .nav-item a:hover {
+    background-color: #7b1fa2;
+}
+
+.create-section .nav-item a:active {
+    background-color: #6a1b9a;
+}
+
+.create-section .nav-item a {
+    background-color: #ff9800;
+}
+
+.create-section .nav-item a:hover {
+    background-color: #fb8c00;
+}
+
+.create-section .nav-item a:active {
+    background-color: #f57c00;
+}
+
+.create-section .nav-item a {
+    background-color: #673ab7;
+}
+
+.create-section .nav-item a:hover {
+    background-color: #512da8;
+}
+
+.create-section .nav-item a:active {
+    background-color: #311b92;
+}
+
+.create-section .nav-item a {
+    background-color: #4caf50;
+}
+.create-section .nav-item a:hover {
+    background-color: #388e3c;
+}

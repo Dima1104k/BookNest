@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Book list</title>
+</head>
+<body>
+<div class="book-card" th:each="book : ${books}">
+    <img th:src="${book.photoUrl}" alt="Photo">
+    <span class="tag">Хіт</span>
+    <h3 th:value="${book.title}"></h3>
+    <p th:value="${book.author}"></p>
+    <p class="price" th:value="${book.price}">$</p>
+</div>
+</body>
+</html>

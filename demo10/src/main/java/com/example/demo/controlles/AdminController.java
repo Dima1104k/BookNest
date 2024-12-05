@@ -1,7 +1,9 @@
 package com.example.demo.controlles;
 
+import com.example.demo.models.Book;
 import com.example.demo.models.User;
 import com.example.demo.models.enums.Role;
+import com.example.demo.service.BookService;
 import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -22,8 +26,8 @@ public class AdminController {
 
     private final UserService userService;
     @GetMapping("/admin")
-    public String admin(Model madel){
-        madel.addAttribute("user", userService.list());
+    public String admin(Model model){
+        model.addAttribute("user", userService.list());
         return "admin";
     }
 
@@ -45,5 +49,4 @@ public class AdminController {
         return "redirect:/admin";
 
     }
-
 }

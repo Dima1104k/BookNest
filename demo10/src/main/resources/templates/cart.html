@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+</head>
+<body>
+<form id="update-cart-form" th:action="@{/updateQuantities}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Фото</th>
+            <th>Назва</th>
+            <th>Автор</th>
+            <th>Ціна</th>
+            <th>Кількість</th>
+            <th>Дія</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${cart}">
+            <td><img th:src="${book.photoUrl}" alt="Фото книги" style="width: 50px; height: auto;"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author.getName()}"></td>
+            <td th:text="${book.price} + ' грн.'"></td>
+
+            <!-- Вибір кількості -->
+            <td>
+                <input type="hidden" name="bookIds" th:value="${book.id}">
+                <select name="quantities" th:value="${cartQuantities[book.id]}">
+                    <option th:value="1" th:text="1"></option>
+                    <option th:value="2" th:text="2"></option>
+                    <option th:value="3" th:text="3"></option>
+                    <option th:value="4" th:text="4"></option>
+                    <option th:value="5" th:text="5"></option>
+                </select>
+            </td>
+
+            <!-- Кнопка для видалення -->
+            <td>
+                <form th:action="@{/removeFromCart}" method="post">
+                    <input type="hidden" name="bookId" th:value="${book.id}">
+                    <button type="submit">Видалити</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- Кнопка для оновлення всього -->
+    <button type="button" id="update-cart-button">Оновити</button>
+</form>
+
+<p>Загальна сума: <span id="total-price" th:text="${totalPrice} + ' грн.'"></span></p>
+
+
+<h2>Оформлення замовлення</h2>
+<form style="max-width: 500px; margin: auto;">
+    <!-- Поле для імені -->
+    <div style="margin-bottom: 15px;">
+        <label for="name" style="display: block; font-weight: bold;">Ім'я:</label>
+        <input type="text" id="name" name="name" required
+               style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    </div>
+
+    <!-- Поле для телефону -->
+    <div style="margin-bottom: 15px;">
+        <label for="phone" style="display: block; font-weight: bold;">Телефон:</label>
+        <input type="tel" id="phone" name="phone" required
+               style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    </div>
+
+    <!-- Поле для адреси -->
+    <div style="margin-bottom: 15px;">
+        <label for="address" style="display: block; font-weight: bold;">Адреса:</label>
+        <input type="text" id="address" name="address" required
+               style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    </div>
+
+    <!-- Поле для коментаря -->
+    <div style="margin-bottom: 15px;">
+        <label for="comment" style="display: block; font-weight: bold;">Коментар:</label>
+        <textarea id="comment" name="comment" rows="4"
+                  style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+    </div>
+
+    <!-- Кнопка для підтвердження -->
+    <button type="submit" style="background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">
+        Оформити замовлення
+    </button>
+</form>
+
+</body>
+</html>
+
+<script>
+    document.getElementById("update-cart-button").addEventListener("click", function () {
+        const form = document.getElementById("update-cart-form");
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST",
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Оновити загальну суму
+                document.getElementById("total-price").textContent = data.totalPrice + " грн.";
+
+                // За потреби можна також оновити кількість у випадаючих списках
+                const quantities = document.querySelectorAll('select[name="quantities"]');
+                quantities.forEach((select, index) => {
+                    select.value = data.quantities[index];
+                });
+            })
+            .catch(error => {
+                console.error("Error updating cart:", error);
+            });
+    });
+</script>

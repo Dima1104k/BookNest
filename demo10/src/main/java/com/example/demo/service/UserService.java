@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
+import com.example.demo.models.Book;
 import com.example.demo.models.User;
 import com.example.demo.models.enums.Role;
+import com.example.demo.rep.BookRepository;
 import com.example.demo.rep.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,12 +19,14 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    private final BookRepository bookRepository;
+
     public boolean createUser(User user) {
         String email = user.getName();
         if (userRepository.findByEmail(email) != null) return false;
         user.setActive(true);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.getRoles().add(Role.ROLE_ADMIN);
+        user.getRoles().add(Role.ROLE_USER);
         if (userRepository.existsByEmail(user.getEmail())) {
             return false;
         }
@@ -59,4 +63,5 @@ public List<User> list(){
         }
         userRepository.save(user);
     }
+
 }
