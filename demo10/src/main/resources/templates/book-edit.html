@@ -1,43 +1,68 @@
 <!DOCTYPE html>
-<html lang="uk" xmlns:th="http://www.thymeleaf.org"  xmlns="http://www.w3.org/1999/xhtml">
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CRM для книгарень та видавництв з
-    управлінням каталогом книг та авторами.">
+    <meta name="description" content="CRM для книгарень та видавництв з управлінням каталогом книг та авторами.">
     <meta name="keywords" content="BookNest, книги, CRM">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <title>Редагування</title>
+    <title>Редагування книги</title>
 </head>
 <body>
-<div class="contain">
-    <h1>Редагування статті</h1>
-    <form th:action="@{/book/edit/{id}(id=${book.id})}" method="post">
-
-        <div class="mb-3">
+<div class="editcontainer">
+    <h1 class="edittitle">Редагування книги</h1>
+    <form class="editform" th:action="@{/book/edit/{id}(id=${book.id})}" method="post">
+        <div class="editinput-group">
             <label for="title">Назва книги:</label>
-            <input type="text" id="title" name="title" class="form-control" th:value="${book.title}" required>
+            <input type="text" id="title" name="title" class="editinput" th:value="${book.title}" required>
         </div>
-        <div class="mb-3">
+        <div class="editinput-group">
             <label for="price">Ціна:</label>
-            <input type="number" id="price" name="price" class="form-control" th:value="${book.price}" required>
+            <input type="number" id="price" name="price" class="editinput" th:value="${book.price}" required>
         </div>
-        <div class="mb-3">
+        <div class="editinput-group">
             <label for="description">Опис:</label>
-            <textarea id="description" name="description" class="form-control" th:text="${book.description}"></textarea>
+            <textarea id="description" name="description" class="editinput edittextarea" th:text="${book.description}" rows="4"></textarea>
         </div>
-        <div class="mb-3">
-            <label for="photo">Опис:</label>
-            <input id="photo" name="photoUrl" class="form-control" th:value="${book.photoUrl}">
+        <div class="editinput-group">
+            <label for="author">Автор:</label>
+            <select id="author" name="authorId" class="editselect" required>
+                <option th:each="author : ${authors}"
+                        th:value="${author.id}"
+                        th:text="${author.name}"
+                        th:selected="${book.author != null and book.author.id == author.id}">
+                </option>
+            </select>
         </div>
-        <button type="submit" class="btn btn-primary">Зберегти зміни</button>
+        <div class="editinput-group">
+            <label for="genre">Жанр:</label>
+            <select id="genre" name="genreId" class="editselect" required>
+                <option th:each="genre : ${genres}"
+                        th:value="${genre.id}"
+                        th:text="${genre.name}"
+                        th:selected="${book.genre != null and book.genre.id == genre.id}">
+                </option>
+            </select>
+        </div>
+        <div class="editinput-group">
+            <label for="publishers">Видавництво:</label>
+            <select id="publishers" name="publishersId" class="editselect" required>
+                <option th:each="publisher : ${publishers}"
+                        th:value="${publisher.id}"
+                        th:text="${publisher.name}"
+                        th:selected="${book.publisher != null and book.publisher.id == publisher.id}">
+                </option>
+            </select>
+        </div>
+        <div class="editinput-group">
+            <label for="photo">Фото:</label>
+            <input id="photo" name="photoUrl" class="editinput" th:value="${book.photoUrl}">
+        </div>
+        <div class="editbuttons">
+            <a th:href="@{/book}" class="btn-cancel">Назад</a>
+            <button type="submit" class="btn-save">Зберегти зміни</button>
+        </div>
     </form>
-
 </div>
 </body>
 </html>

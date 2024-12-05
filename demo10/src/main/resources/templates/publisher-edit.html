@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CRM для книгарень та видавництв з управлінням каталогом книг та авторами.">
+    <meta name="keywords" content="BookNest, видавництва, CRM">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Редагування видавництва</title>
+</head>
+<body>
+<div class="editcontainer">
+    <h1 class="edittitle">Редагування видавництва</h1>
+    <form class="editform" th:action="@{/publisher/edit/{id}(id=${publishers.id})}" method="post">
+        <div class="editinput-group">
+            <label for="name">Назва видавництва:</label>
+            <input type="text" id="name" name="name" class="editinput" th:value="${publishers.name}" required>
+        </div>
+        <div class="editinput-group">
+            <label for="address">Адреса:</label>
+            <input type="text" id="address" name="address" class="editinput" th:value="${publishers.address}"
+                   pattern="\d{1,5}\s[A-Za-zА-Яа-яІіЇїЄєҐґ'’\s]+,\s[A-Za-zА-Яа-яІіЇїЄєҐґ'’\s]+,\s\d{5}"
+                   title="Формат адреси: Номер будинку, Вулиця, Місто, Індекс"
+                   required>
+        </div>
+        <script>
+            document.getElementById('address').addEventListener('input', function () {
+                this.value = this.value.replace(/,\s*/g, ', ');
+            });
+        </script>
+
+
+
+        <div class="editinput-group">
+            <label for="tel">Телефон:</label>
+            <input type="text" id="tel" name="phone" class="editinput" th:value="${publishers.phone}" placeholder="+38(___) __-__-___" required>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+        <script type="text/javascript">
+            jQuery(function($) {
+                $("#tel").mask("+38(999) 99-99-999");
+            });
+        </script>
+        <div class="editinput-group">
+            <label for="website">Вебсайт:</label>
+            <input type="url" id="website" name="website" class="editinput" th:value="${publishers.website}" placeholder="https://example.com">
+        </div>
+        <div class="editbuttons">
+            <a th:href="@{/admin}" class="btn-cancel">Назад</a>
+            <button type="submit" class="btn-save">Зберегти зміни</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

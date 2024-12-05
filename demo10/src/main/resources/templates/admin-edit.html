@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Зміна ролей</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="editcontainer">
+    <h1 class="edittitle">Зміна ролей</h1>
+    <hr>
+    <h3 class="editsubtitle">Редагування користувача <span th:text="${user.name}"></span></h3>
+    <form class="editform" th:action="@{/admin/user/edit}" method="post">
+        <div class="editinput-group" th:each="role : ${roles}">
+            <label class="editcheckbox-label">
+                <input type="checkbox" th:name="${role}" th:checked="${user.roles.contains(role) ? 'checked' : null}" class="editcheckbox"/>
+                <span th:text="${role}" class="editcheckbox-text"></span>
+            </label>
+        </div>
+        <input type="hidden" th:value="${user.id}" name="userId">
+        <input type="hidden" th:value="${_csrf.token}" name="_csrf">
+        <div class="editbuttons">
+            <a href="/author/list" class="btn-cancel">Назад</a>
+            <button type="submit" class="btn-save">Обновити</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

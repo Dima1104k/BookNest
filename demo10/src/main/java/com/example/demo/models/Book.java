@@ -4,12 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name="book")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +26,11 @@ public class Book {
     @JoinColumn(name = "author_id")
     private Author author;
     private String photoUrl;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "genre_id")
+    private Genres genre;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
 }

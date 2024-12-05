@@ -6,10 +6,11 @@ import com.example.demo.rep.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.security.Principal;
-
-
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -21,7 +22,10 @@ public class UserService {
         if (userRepository.findByEmail(email) != null) return false;
         user.setActive(true);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.getRoles().add(Role.ROLE_USER);
+        user.getRoles().add(Role.ROLE_ADMIN);
+        if (userRepository.existsByEmail(user.getEmail())) {
+            return false;
+        }
         userRepository.save(user);
         return true;
     }
@@ -37,15 +41,10 @@ public class UserService {
             }
             userRepository.save(user);
         }*/
-/*public List<User> list(){
+public List<User> list(){
         return userRepository.findAll();
 
-}*/
-/*    public User getUserByPrincipal(Principal principal) {
-        if (principal == null) return new User();
-        return userRepository.findByEmail(principal.getName());
-    }*/
-/*
+}
     public void changeUserRoles(User user, Map<String, String> form) {
         Set<String> roles = Arrays.stream(Role.values())
                 .map(Role::name)
@@ -60,6 +59,4 @@ public class UserService {
         }
         userRepository.save(user);
     }
-}
-*/
 }

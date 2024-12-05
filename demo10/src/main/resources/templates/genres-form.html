@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Додавання жанрів</title>
+</head>
+<body>
+<h1>Додавання жанрів</h1>
+<form th:action="@{/genres/new}" method="post">
+    <div class="mb-3">
+        <label for="name">Назва жарну:</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="description">Опис жанру:</label>
+        <textarea type="text" id="description" name="description" class="form-control" rows="4" required>
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Зберегти жар</button>
+</form>
+<div th:if="${error}" class="alert alert-danger mt-3">
+    <p th:text="${error}"></p>
+</div>
+<a th:href="@{/}">На головну</a>
+</body>
+</html>

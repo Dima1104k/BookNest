@@ -7,10 +7,9 @@
 </head>
 <body>
 <h1>Автори</h1>
-<table class="table" border="1">
+<table class="table">
     <thead>
     <tr>
-        <th>ID</th>
         <th>Ім'я автора</th>
         <th>Біографія автора</th>
         <th>Дії</th>
@@ -18,16 +17,21 @@
     </thead>
     <tbody>
     <tr th:each="author : ${authors}">
-        <td th:text="${author.id}">1</td>
         <td th:text="${author.name}">Ім'я автора</td>
         <td th:text="${author.biography}">Біографія автора</td>
         <td>
             <a th:href="@{/author/edit/{id}(id=${author.id})}" class="btn btn-warning">Редагувати</a>
+            <form th:action="@{/author/delete/{id}(id=${author.id})}" method="post" style="display:inline;">
+                <button type="submit">Видалити</button>
+            </form>
         </td>
+
     </tr>
 
     </tbody>
 </table>
-
+<div>
+    <a th:href="@{/admin}" class="btn">Назад</a>
+</div>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Список жанрів</title>
+</head>
+<body>
+<h1>Жанри</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Назва жанру</th>
+        <th>Опис жанру</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="genre : ${genres}">
+        <td th:text="${genre.name}">Ім'я автора</td>
+        <td th:text="${genre.description}">Біографія автора</td>
+        <td>
+            <a th:href="@{/genre/edit/{id}(id=${genre.id})}" class="btn btn-warning">Редагувати</a>
+            <form th:action="@{/genre/delete/{id}(id=${genre.id})}" method="post" style="display:inline;">
+                <button type="submit">Видалити</button>
+            </form>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/admin}" class="btn">Назад</a>
+</div>
+</body>
+</html>

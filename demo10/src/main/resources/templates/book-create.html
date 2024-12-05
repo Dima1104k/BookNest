@@ -38,6 +38,20 @@
         </select>
     </div>
     <div class="mb-3">
+        <label for="genre">Жанр книги:</label>
+        <select id="genre" name="genresrId" class="form-control" required>
+            <option value="" disabled selected>Виберіть жанр</option>
+            <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}">Жанр</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="publishers">Видавництво:</label>
+        <select id="publishers" name="publishersId" class="form-control" required>
+            <option value="" disabled selected>Виберіть видавництво</option>
+            <option th:each="publisher : ${publishers}" th:value="${publisher.id}" th:text="${publisher.name}">Видавництво</option>
+        </select>
+    </div>
+    <div class="mb-3">
         <label for="photo">Фото:</label>
         <input id="photo" name="photoUrl" class="form-control">
     </div>

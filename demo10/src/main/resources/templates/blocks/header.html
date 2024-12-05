@@ -1,41 +1,52 @@
 <header th:fragment="header" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
-
     <header class="header d-flex justify-content-between align-items-center">
+
         <a href="/" th:href="@{/}">
             <img src="/images/logo.jpg" alt="logo">
         </a>
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="admin-page.html">Адмін сторінка</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="login.html">Особиста сторінка</a>
-            </li>
-            <!--<div th:if="${user.isAdmin()}" >
+
+
+        <ul class="nav" style="display: flex; gap: 15px; align-items: center;">
+
+            <!-- Для незареєстрованих користувачів -->
+            <div sec:authorize="isAnonymous()" style="display: flex; gap: 10px;">
                 <li class="nav-item">
-               <a class="nav-link" th:href="@{/book/new}">Створити книгу</a>
+                    <a class="nav-link" th:href="@{/login}">Увійти</a>
                 </li>
-                <li class="nav-item">
-                <a class="nav-link" th:href="@{/author/new}">Створити автора</a>
-                </li>
-            </div>-->
-            <div sec:authorize="hasRole('ROLE_ADMIN')" style="display: flex; gap: 10px; align-items: center;">
-                <li class="nav-item">
-                    <!-- Посилання на створення книги -->
-                    <a class="nav-link" th:href="@{/book/new}">Створити книгу</a>
-                </li>
-                <li class="nav-item">
-                    <!-- Посилання на створення автора -->
-                    <a class="nav-link" th:href="@{/author/new}">Створити автора</a>
+            </div>
+
+            <!-- Для залогінених користувачів -->
+            <div sec:authorize="isAuthenticated()" style="display: flex; gap: 10px;">
+                <!-- Посилання для адміністратора -->
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="nav-link" th:href="@{/admin}">Адмін сторінка</a>
                 </li>
 
-            </div>
-            <li class="с">
+                <!-- Особиста сторінка для всіх ролей -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/my-page}">Особиста сторінка</a>
+                </li>
+
                 <!-- Кнопка виходу -->
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Вийти" style="margin: 0; padding: 5px 10px;"/>
-                </form>
-            </li>
+                <li class="nav-item">
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Вийти" class="btn btn-link nav-link" style="padding: 0;"/>
+                    </form>
+                </li>
+            </div>
         </ul>
     </header>
 </header>
+
+
+<!--  <div sec:authorize="hasRole('ROLE_ADMIN')" style="display: flex; gap: 10px; align-items: center;">
+      <li class="nav-item">
+          &lt;!&ndash; Посилання на створення книги &ndash;&gt;
+          <a class="nav-link" th:href="@{/book/new}">Створити книгу</a>
+      </li>
+      <li class="nav-item">
+          &lt;!&ndash; Посилання на створення автора &ndash;&gt;
+          <a class="nav-link" th:href="@{/author/new}">Створити автора</a>
+      </li>
+
+  </div>-->

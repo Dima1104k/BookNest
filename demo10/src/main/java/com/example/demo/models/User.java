@@ -19,9 +19,7 @@ import java.util.Set;
         @Column(name = "id")
         @GeneratedValue(strategy = GenerationType.IDENTITY) // Використання AUTO_INCREMENT
         private Long id;
-
         private String name;
-        private String surname;
         @Column(unique = true)
         private String email;
         @Column(length = 1000)
@@ -31,8 +29,6 @@ import java.util.Set;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     /*Hibernate автоматично створює додаткову таблицю для збереження значень*/
-
-
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles =new HashSet<>();
@@ -65,7 +61,5 @@ import java.util.Set;
     public boolean isEnabled() {
         return active;
     }
-    public boolean isAdmin(){
-        return roles.contains(Role.ROLE_ADMIN);
-    }
+
 }

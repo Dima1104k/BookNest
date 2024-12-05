@@ -1,35 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CRM для книгарень та видавництв з
-    управлінням каталогом книг та авторами.">
+    <meta name="description" content="CRM для книгарень та видавництв з управлінням каталогом книг та авторами.">
     <meta name="keywords" content="BookNest, книги, CRM">
     <link rel="stylesheet" th:href="@{/css/style.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Редагування автора</title>
 </head>
 <body>
-<header th:insert="blocks/header :: header"></header>
-<main>
-<div class="container mt-5 mb-5">
-    <h1>Редагування автора</h1>
-    <div th:each="el : ${author}">
-        <form th:action="@{/author/edit/{id}(id=${author.id})}" method="post">
-            <input type="text" th:value="${el.name}" name="name" placeholder="Введіть ім'я автора" class="form-control" required/><br>
-            <textarea th:text="${el.biography}" name="biography" placeholder="Введіть біографію автора" class="form-control" required></textarea>
-            <button type="submit"  class="btn btn-success">Обновити</button>
-        </form>
-    </div>
+<div class="editcontainer">
+    <h1 class="edittitle">Редагування автора</h1>
+    <form class="editform" th:action="@{/author/edit/{id}(id=${author.id})}" method="post">
+        <div class="editinput-group">
+            <label for="name">Ім'я автора:</label>
+            <input type="text" id="name" th:value="${author.name}" name="name" class="editinput" placeholder="Введіть ім'я автора" required>
+        </div>
+        <div class="editinput-group">
+            <label for="biography">Біографія автора:</label>
+            <textarea id="biography" th:text="${author.biography}" name="biography" class="editinput edittextarea" placeholder="Введіть біографію автора" rows="4" required></textarea>
+        </div>
+        <div class="editbuttons">
+            <a href="/author/list" class="btn-cancel">Назад</a>
+            <button type="submit" class="btn-save">Обновити</button>
+        </div>
+    </form>
+
 </div>
-
-</main>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<footer th:insert="blocks/foot :: footer"></footer>
 </body>
 </html>

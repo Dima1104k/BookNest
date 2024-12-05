@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Додавання видавця</title>
+</head>
+<body>
+<h1>Додавання видавця</h1>
+<form th:action="@{/publisher/new}" method="post">
+    <div class="mb-3">
+        <label for="name">Назва видавця:</label>
+        <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="address">Адреса:</label>
+        <input type="text" id="address" name="address" class="form-control" placeholder="123 Main Street, Kyiv, 01001"
+               pattern="\d{1,5}\s[A-Za-zА-Яа-яІіЇїЄєҐґ'’\s]+,\s[A-Za-zА-Яа-яІіЇїЄєҐґ'’\s]+,\s\d{5}"
+               title="Формат адреси: Номер будинку, Вулиця, Місто, Індекс"
+               required>
+    </div>
+    <script>
+        document.getElementById('address').addEventListener('input', function () {
+            this.value = this.value.replace(/,\s*/g, ', ');
+        });
+    </script>
+
+    <div class="mb-3">
+        <label for="tel">Телефон:</label>
+        <input type="text" id="tel" name="phone" class="form-control" placeholder="+38(___) __-__-___" required>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $("#tel").mask("+38(999) 99-99-999");
+        });
+    </script>
+    <div class="mb-3">
+        <label for="website">Вебсайт:</label>
+        <input type="url" id="website" name="website" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Зберегти жар</button>
+</form>
+<div th:if="${error}" class="alert alert-danger mt-3">
+    <p th:text="${error}"></p>
+</div>
+<a th:href="@{/}">На головну</a>
+</body>
+
+</html>

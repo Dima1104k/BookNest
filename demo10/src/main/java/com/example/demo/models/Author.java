@@ -21,5 +21,5 @@ public class Author {
     @Column(name = "biography", columnDefinition = "text")
     private String biography;
     @OneToMany(mappedBy = "author")
-    private List<Book> books=new ArrayList<>();
+    private List<Book> books = new ArrayList<>();
 }
