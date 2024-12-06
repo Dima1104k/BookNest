@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/cart-style.css}">
+    <title>Кошик покупок</title>
+</head>
+<body>
+<h1>Кошик покупок</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Назва</th>
+        <th>Фото</th>
+        <th>Ціна</th>
+        <th>Кількість</th>
+        <th>Загальна ціна</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${cart.items}">
+        <td th:text="${item.book.title}"></td>
+        <td>
+            <img th:src="${item.book.photoUrl}" alt="Фото книги" style="width:100px; height:auto;">
+        </td>
+
+        <td th:text="${item.book.price}"></td>
+        <td>
+            <form th:action="@{/cart/update/{itemId}(itemId=${item.id})}" method="post">
+                <input type="number" name="quantity" th:value="${item.quantity}" min="1">
+                <button type="submit">Оновити</button>
+            </form>
+        </td>
+        <td th:text="${item.totalPrice}"></td>
+        <td>
+            <form th:action="@{/cart/remove/{id}(id=${item.book.id})}" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                <button type="submit">Видалити</button>
+            </form>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Загальна сума: <span th:text="${totalPrice}"></span> грн</h2>
+<form th:action="@{/cart/submit}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <button type="submit" class="btn btn-primary">Надіслати</button>
+</form>
+
+<a href="/">Продовжити покупки</a>
+<form th:action="@{/cart/clear}" method="post">
+    <button type="submit">Очистити кошик</button>
+</form>
+</body>
+</html>

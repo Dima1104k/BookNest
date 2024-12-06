@@ -22,14 +22,16 @@ public class PublisherController {
     }
 
     @PostMapping("/publisher/new")
-    public String createPublisher(@RequestParam String name, @RequestParam String address, @RequestParam String phone,  @RequestParam String website,Model model) {
+    public String createPublisher(@RequestParam String name, @RequestParam String address,
+                                  @RequestParam String phone,  @RequestParam String website,Model model) {
        Publisher publisher  = new Publisher ();
         publisher.setName(name);
         publisher.setAddress(address);
         publisher.setPhone(phone);
         publisher.setWebsite(website);
         if(!publisherService.savePublisher(publisher)) {
-            model.addAttribute("error", "Видавництво: " + publisher.getName() + " уже існує");
+            model.addAttribute("error", "Видавництво: " + publisher.getName()
+                    + " уже існує");
             return "publishers-form";
         }
         publisherService.savePublisher(publisher);
@@ -58,7 +60,9 @@ public class PublisherController {
 
 
     @PostMapping("/publisher/edit/{id}")
-    public String updatePublisher(@PathVariable Long id,@RequestParam String name, @RequestParam String address, @RequestParam String phone,  @RequestParam String website) {
+    public String updatePublisher(@PathVariable Long id,@RequestParam String name,
+                                  @RequestParam String address, @RequestParam String phone,
+                                  @RequestParam String website) {
         Publisher updatePublisher= publisherService.getPublisherById(id);
         updatePublisher.setName(name);
         updatePublisher.setWebsite(website);
@@ -67,5 +71,4 @@ public class PublisherController {
         publisherService.updatedPublisher(id,updatePublisher);
         return "redirect:/publishers/list";
     }
-
 }

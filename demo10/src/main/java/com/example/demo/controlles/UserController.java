@@ -24,16 +24,11 @@ public class UserController {
     @PostMapping("/registration")
     public String createUser(User user, Model model){
         if(!userService.createUser(user)){
-            model.addAttribute("error","Користувач з email: " + user.getEmail() + " уже існує");
+            model.addAttribute("error","Користувач з email: "
+                    + user.getEmail() + " уже існує");
             return "registration";
 
         }
         return "redirect:/login";
     }
-/*    @GetMapping("/user/{user}")
-    public String userInfo(@PathVariable("user") User user, Model model) {
-        model.addAttribute("user", user);
-        *//*model.addAttribute("products",user.getProductList());*//*
-        return "user-info";
-    }*/
 }

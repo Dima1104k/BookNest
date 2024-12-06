@@ -87,9 +87,8 @@
                 <p th:text="'Автор: ' + ${book.author.getName()}"></p>
                 <p class="price" th:text="'Ціна: ' + ${book.price} + ' грн.'"></p>
 
-                <form th:action="@{/addToCart}" method="post">
-                    <input type="hidden" name="bookId" th:value="${book.id}">
-                    <button type="submit" class="cart-button">Додати в корзину</button>
+                <form th:action="@{/cart/add/{bookId}(bookId=${book.id})}" method="post">
+                    <button type="submit" class="btn btn-primary">Додати в корзину</button>
                 </form>
             </div>
 

@@ -18,26 +18,30 @@ import java.util.List;
 public class PublisherService {
     private final PublisherRepository publisherRepository;
     private final BookRepository bookRepository;
+
     @Transactional
     public List<Publisher> getAllPublishers() {
         return publisherRepository.findAll();
     }
+
     @Transactional
     public void deletePublisher(Long id) {
         Publisher publisher = publisherRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Видавництва не знайдений"));
+                .orElseThrow(() -> new RuntimeException("Видавництва не знайдено"));
 
         for (Book book : publisher.getBooks()) {
-            book.setAuthor(null);
+            book.setPublisher(null);
             bookRepository.save(book);
         }
 
         publisherRepository.deleteById(id);
     }
+
     @Transactional
     public Publisher getPublisherById(Long id) {
         return publisherRepository.findById(id).orElse(null);
     }
+
     @Transactional
     public boolean savePublisher(Publisher publisher) {
 
@@ -48,6 +52,7 @@ public class PublisherService {
         publisherRepository.save(publisher);
         return true;
     }
+
     @Transactional
     public void updatedPublisher(Long id, Publisher updatedGenres) {
         Publisher publisher = getPublisherById(id);

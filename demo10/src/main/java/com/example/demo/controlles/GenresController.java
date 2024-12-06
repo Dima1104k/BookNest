@@ -55,5 +55,4 @@ public class GenresController {
         genresService.updateGenres(id,updatedGenre);
         return "redirect:/genres/list";
     }
-
 }

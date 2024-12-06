@@ -1,14 +1,13 @@
-
 /*admin.html*/
 .table {
-    width: 70%; /* Таблиця займатиме 70% ширини сторінки */
-    max-width: 800px; /* Максимальна ширина таблиці */
-    margin: 0 auto; /* Центрує таблицю по горизонталі */
+    width: 70%;
+    max-width: 800px;
+    margin: 0 auto;
     margin-bottom: 20px;
     border-collapse: collapse;
     background: #fff;
     border: 3px solid #81A4CD !important;
-    text-align: center; /* Вирівнює текст */
+    text-align: center;
 }
 
 
@@ -16,110 +15,101 @@
     font-weight: bold;
     padding: 10px;
     background: #81A4CD !important;
-    color: #000; /* Чорний текст */
+    color: #000;
     text-align: center;
     font-size: 18px;
-    border: 1px solid #ddd; /* Межі між заголовками */
+    border: 1px solid #ddd;
 }
 
 .table td {
     padding: 10px;
-    border: 1px solid #ddd; /* Сіра межа для поділу */
+    border: 1px solid #ddd;
     font-size: 16px;
-    word-wrap: break-word; /* Переноси тексту */
-    max-width: 250px; /* Максимальна ширина колонок */
-
+    word-wrap: break-word;
+    max-width: 250px;
 }
 
 .table tr:nth-child(even) {
-    background: #f9f9f9; /* Світло-сірий колір для чіткості рядків */
+    background: #f9f9f9;
 }
 
 .table ul {
-    list-style: none; /* Вимкнення стандартних маркерів списку */
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
 .table ul li {
-    display: inline-block; /* Ролі в один рядок */
-    margin-right: 5px; /* Відступи між ролями */
+    display: inline-block;
+    margin-right: 5px;
     padding: 2px 5px;
-    background: #ddd; /* Фон для ролі */
-    border-radius: 3px; /* Закруглені кути */
-    font-size: 14px; /* Трохи менший шрифт */
+    background: #ddd;
+    border-radius: 3px;
+    font-size: 14px;
     color: #000;
 }
 
-
 .table button,
 .table a {
-    color: #fff; /* Білий текст */
-    border: none; /* Без рамки */
-    font-weight: bold; /* Жирний текст */
-    border-radius: 5px; /* Згладжені кути */
-    cursor: pointer; /* Іконка курсора у вигляді руки */
-    text-decoration: none; /* Заборона підкреслення посилання */
-    padding: 11px 15px; /* Однакові відступи */
-    font-size: 14px; /* Однаковий розмір тексту */
-    line-height: 1; /* Висота рядка дорівнює 16px */
-    display: inline-block; /* Для однакового вигляду */
-    transition: all 0.3s ease; /* Анімація при наведенні */
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 11px 15px;
+    font-size: 14px;
+    line-height: 1;
+    display: inline-block;
+    transition: all 0.3s ease;
 }
 
-/* Стиль для червоної кнопки (видалення) */
 .table button {
-    background-color: #ff4d4d; /* Яскраво-червоний фон */
+    background-color: #ff4d4d;
 }
 .table button:hover {
-    background-color: #ff0000; /* Темніший червоний при наведенні */
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Світіння при наведенні */
-    transform: scale(1.05); /* Легке збільшення при наведенні */
+    background-color: #ff0000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    transform: scale(1.05);
 }
 .table a {
-    background-color: #81A4CD; /* Жовто-оранжевий фон */
-    text-align: center; /* Центрування тексту */
+    background-color: #81A4CD;
+    text-align: center;
 }
 .table a:hover {
-    background-color: #3E7CB1; /* Темніший жовто-оранжевий при наведенні */
-    box-shadow: 0 0 10px rgba(46, 90, 130, 0.5); /* Світіння при наведенні */
-    transform: scale(1.05); /* Легке збільшення при наведенні */
+    background-color: #3E7CB1;
+    box-shadow: 0 0 10px rgba(46, 90, 130, 0.5);
+    transform: scale(1.05);
 }
 
-/* Основний стиль для контейнера */
 .create-section {
-    margin-top: 20px; /* Відступ зверху */
-    display: flex; /* Вирівнюємо посилання в один ряд */
-    gap: 15px; /* Простір між кнопками */
-    justify-content: center; /* Центруємо кнопки по горизонталі */
-    align-items: center; /* Центруємо кнопки по вертикалі (якщо потрібно) */
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
-
-/* Стиль для кнопок */
 .create-section .btn {
-    margin-left: 10px; /* Відступ праворуч */
-    display: inline-block; /* Дозволяємо відступи */
-    color: #fff; /* Білий текст */
-    margin-right: 20px; /* Відступ праворуч */
-    background-color: #3E7CB1 ; /* Синій фон */
-    padding: 10px 20px; /* Відступи всередині */
-    border: none; /* Без рамки */
-    border-radius: 5px; /* Закруглені кути */
-    text-decoration: none; /* Забираємо підкреслення */
-    font-size: 16px; /* Розмір тексту */
-    font-weight: bold; /* Жирний текст */
-    cursor: pointer; /* Іконка курсора */
-    transition: background-color 0.3s ease; /* Ефект при наведенні */
+    margin-left: 10px;
+    display: inline-block;
+    color: #fff;
+    margin-right: 20px;
+    background-color: #3E7CB1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Ефект при наведенні */
 .create-section .btn:hover {
-    background-color: #054A91; /* Темніший синій фон */
+    background-color: #054A91;
 }
 
-
-/*edit_genres*/
 .editcontainer {
     max-width: 600px;
     margin: 50px auto;

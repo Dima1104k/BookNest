@@ -1,11 +1,10 @@
 package com.example.demo.models;
-
 import com.example.demo.models.enums.Role;
 import jakarta.persistence.*;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -15,7 +14,9 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "users")
+@Table(name="users")
+@EqualsAndHashCode(exclude = "cart")
+@ToString(exclude = "cart")
 @Data
 public class User implements UserDetails {
     @Id
@@ -28,12 +29,13 @@ public class User implements UserDetails {
     @Column(length = 1000)
     private String password;
     private boolean active;
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
+    private Cart cart;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
-    private Set<Role> roles = new HashSet<>();
-
+    private Set<Role> roles =new HashSet<>();
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;

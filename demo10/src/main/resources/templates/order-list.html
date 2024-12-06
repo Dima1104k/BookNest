@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+            font-weight: bold;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Користувач</th>
+        <th>Загальна сума</th>
+        <th>Дата замовлення</th>
+        <th>Книги</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.user.name}"></td>
+        <td th:text="${order.totalPrice}"></td>
+        <td th:text="${order.orderDate}"></td>
+        <td>
+            <table>
+                <thead>
+                <tr>
+                    <th>Фото</th>
+                    <th>Назва книги</th>
+                    <th>Кількість</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${order.items}">
+                    <td><img th:src="${item.book.photoUrl}" alt="Фото книги"></td>
+                    <td th:text="${item.book.title}"></td>
+                    <td th:text="${item.quantity}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,4 +1,3 @@
-/* Загальні стилі */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,21 +5,18 @@ body {
     background-color: #f9f9f9;
 }
 
-/* Стиль для заголовка */
 h1 {
     text-align: center;
     color: #333;
     margin-top: 20px;
 }
 
-/* Лінія під заголовком */
 hr {
     border: 1px solid #ddd;
     width: 80%;
     margin: 20px auto;
 }
 
-/* Стилі для таблиці */
 .table {
     width: 80%;
     margin: 20px auto;
@@ -44,7 +40,6 @@ hr {
     color: #555;
 }
 
-/* Стилі для кнопок */
 .btn {
     text-decoration: none;
     display: inline-block;
@@ -76,13 +71,11 @@ hr {
     background-color: #c9302c;
 }
 
-/* Стилі для зображення книги */
 img {
     max-width: 50px;
     border-radius: 5px;
 }
 
-/* Стиль для посилання назад */
 .back-link {
     text-align: center;
     margin-top: 20px;
@@ -100,4 +93,3 @@ img {
 .btn-back:hover {
     background-color: gray;
 }
-

@@ -1,4 +1,5 @@
 package com.example.demo.service;
+
 import com.example.demo.models.Author;
 import com.example.demo.models.Book;
 import com.example.demo.models.Genres;
@@ -15,6 +16,7 @@ import java.util.List;
 public class GenresService {
     private final GenresRepository genresRepository;
     private final BookRepository bookRepository;
+
     @Transactional
     public List<Genres> getAllGenres() {
         return genresRepository.findAll();
@@ -29,6 +31,7 @@ public class GenresService {
         genresRepository.save(genre);
         return true;
     }
+
     @Transactional
     public void deleteBook(Long id) {
         Genres genre = genresRepository.findById(id)
@@ -40,6 +43,7 @@ public class GenresService {
         }
         genresRepository.deleteById(id);
     }
+
     @Transactional
     public void updateGenres(Long id, Genres updatedGenres) {
         Genres genres = getGenresById(id);
@@ -47,6 +51,7 @@ public class GenresService {
         genres.setDescription(updatedGenres.getDescription());
         genresRepository.save(genres);
     }
+
     @Transactional
     public Genres getGenresById(Long id) {
         return genresRepository.findById(id).orElseThrow(() -> new RuntimeException("Жанр не знайдено"));
